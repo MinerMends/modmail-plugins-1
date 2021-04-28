@@ -41,7 +41,7 @@ class Mediaonly(commands.Cog):
             else:
                 await message.delete()
                 emb = discord.Embed(description="`Message Error` | Hmm... <a:guardian:836766471337803847>\nOnly **images/captions** are allowed in this channel. Edit your previous message to add captions.",color=0x06c9ff)
-                await ctx.send(embed=emb)
+                await message.channel.send(embed=emb)
                 #await self.delete(message, warning=f'[**Error**] Only images/captions are allowed in this channel. Edit your previous message to add captions.')
 
 
