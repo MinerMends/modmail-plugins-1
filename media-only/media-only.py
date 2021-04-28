@@ -20,7 +20,7 @@ class Mediaonly(commands.Cog):
 
     async def delete(self, message, warning):
         if warning:
-            await message.channel.send(warning, delete_after=5)
+            await message.channel.send(warning, delete_after=10)
         try:
             await message.delete()
         except discord.NotFound:
@@ -34,12 +34,12 @@ class Mediaonly(commands.Cog):
                 await self.delete(message, warning=None)
             elif len(message.attachments):
                 if len(message.attachments) > 1:
-                    await self.delete(message, warning=f'{message.author.mention}, send 1 emoji at a time.')
-                elif not (message.attachments[0].filename.endswith('.png') or message.attachments[0].filename.endswith('.gif') or message.attachments[0].filename.endswith('.jpeg') or message.attachments[0].filename.endswith('.jpg') or message.attachments[0].filename.endswith('.mp4')):
-                    await self.delete(message, warning=f'{message.author.mention}, only png, gif, jpg, jpeg and mp4 files are allowed here 📷')
+                    await self.delete(message, warning=f'[**Error**] Only `1` attachment/interval may be sent.')
+                elif not (message.attachments[0].filename.endswith('.png') or message.attachments[0].filename.endswith('.jpeg') or message.attachments[0].filename.endswith('.jpg')):
+                    await self.delete(message, warning=f'[**Error**] Only images/captions are allowed in this channel. Edit your previous message to add captions.')
 
             else:
-                await self.delete(message, warning=f'{message.author.mention}, only images + captions are allowed. If you wish to add a caption, edit your original message.')
+                await self.delete(message, warning=f'[**Error**] Only images/captions are allowed in this channel. Edit your previous message to add captions.')
 
 
     @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
