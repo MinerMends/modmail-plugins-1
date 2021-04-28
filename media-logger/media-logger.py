@@ -24,7 +24,7 @@ class MediaLogger(commands.Cog):
         if m.author.bot: return
 
         em = discord.Embed(
-            description=f'[Jump to Message]({m.jump_url})',
+            description=f'`Image Sent` | [Message]({m.jump_url})',
             color=self.bot.main_color,
             timestamp=datetime.utcnow()
         )
@@ -34,6 +34,7 @@ class MediaLogger(commands.Cog):
                 file = await a.to_file()
                 channel = await self.log_channel()
                 if channel:
+                    em.set_image(url=file)
                     await channel.send(file=file, embed=em)
 
     @checks.has_permissions(PermissionLevel.OWNER)
