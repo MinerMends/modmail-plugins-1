@@ -16,7 +16,7 @@ class TopSupporters(commands.Cog):
 
     @checks.has_permissions(PermissionLevel.ADMINISTRATOR)
     @commands.command()
-    async def topsupporters(self, ctx, *, dt: UserFriendlyTime):
+    async def stats(self, ctx, *, dt: UserFriendlyTime):
         """Retrieves top supporters for the specified time period"""
         async with ctx.typing():
             date = datetime.utcnow() - (dt.dt - datetime.utcnow())
@@ -45,7 +45,7 @@ class TopSupporters(commands.Cog):
                     fmt += f'**{n}.** `{u}` - {supporters[k]}\n'
                     n += 1
 
-            em = discord.Embed(title='Active Supporters', description=fmt, timestamp=date, color=0x7588da)
+            em = discord.Embed(title='Top Supporters', description=fmt, timestamp=date, color=0x06c9ff)
             em.set_footer(text='Since')
             await ctx.send(embed=em)
 
