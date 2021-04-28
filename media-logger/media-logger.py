@@ -34,7 +34,6 @@ class MediaLogger(commands.Cog):
                 file = await a.to_file()
                 channel = await self.log_channel()
                 if channel:
-                    em.set_image(url=file)
                     await channel.send(file=file, embed=em)
 
     @checks.has_permissions(PermissionLevel.OWNER)
