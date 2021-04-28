@@ -34,13 +34,19 @@ class Mediaonly(commands.Cog):
                 await self.delete(message, warning=None)
             elif len(message.attachments):
                 if len(message.attachments) > 1:
-                    await self.delete(message, warning=f'[**Error**] Only `1` attachment per interval may be sent.')
+                    await message.delete()
+                    emb = discord.Embed(description="`Message Error` | <a:guardian:836766471337803847>\nOnly **1** attachment per interval may be sent.",color=0x06c9ff)
+                    await message.channel.send(embed=emb)
+                    #await self.delete(message, warning=f'[**Error**] Only `1` attachment per interval may be sent.')
                 elif not (message.attachments[0].filename.endswith('.png') or message.attachments[0].filename.endswith('.jpeg') or message.attachments[0].filename.endswith('.jpg')):
-                    await self.delete(message, warning=f'[**Error**] Only images/captions are allowed in this channel. Edit your previous message to add captions.')
+                    await message.delete()
+                    emb = discord.Embed(description="`Message Error` | <a:guardian:836766471337803847>\nOnly **images/captions** are allowed in this channel.\nEdit your previous message to add captions.",color=0x06c9ff)
+                    await message.channel.send(embed=emb)
+                    #await self.delete(message, warning=f'[**Error**] Only images/captions are allowed in this channel. Edit your previous message to add captions.')
 
             else:
                 await message.delete()
-                emb = discord.Embed(description="`Message Error` | Hmm... <a:guardian:836766471337803847>\nOnly **images/captions** are allowed in this channel.\nEdit your previous message to add captions.",color=0x06c9ff)
+                emb = discord.Embed(description="`Message Error` | <a:guardian:836766471337803847>\nOnly **images/captions** are allowed in this channel.\nEdit your previous message to add captions.",color=0x06c9ff)
                 await message.channel.send(embed=emb)
                 #await self.delete(message, warning=f'[**Error**] Only images/captions are allowed in this channel. Edit your previous message to add captions.')
 
