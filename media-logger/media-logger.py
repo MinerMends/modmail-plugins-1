@@ -30,7 +30,7 @@ class MediaLogger(commands.Cog):
         )
         em.set_footer(text=f'Author: {m.author.id} | Message ID: {m.id}')
         for a in m.attachments:
-            if a.filename.endswith('.png') or a.filename.endswith('.jpeg') or a.filename.endswith('.gif') or a.filename.endswith('.mp4') or a.filename.endswith('.jpg') or a.filename.endswith('.txt'):
+            if a.filename.endswith('.png') or a.filename.endswith('.jpeg') or a.filename.endswith('.gif') or a.filename.endswith('.mp4') or a.filename.endswith('.jpg'):
                 file = await a.to_file()
                 channel = await self.log_channel()
                 if channel:
