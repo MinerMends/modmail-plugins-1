@@ -35,7 +35,7 @@ class MediaLogger(commands.Cog):
                 file = await a.to_file()
                 channel = await self.log_channel()
                 if channel:
-                    await channel.send(f"**Sent by** <@{m.author.id}> | **Channel**: <#{m.channel.id}> | [Jump to Msg]{m.jump_url}",file=file)
+                    await channel.send(f"**Sent by** <@{m.author.id}> | **Channel**: <#{m.channel.id}> | [Jump to Msg]({m.jump_url})",file=file)
 
     @checks.has_permissions(PermissionLevel.OWNER)
     @commands.command()
